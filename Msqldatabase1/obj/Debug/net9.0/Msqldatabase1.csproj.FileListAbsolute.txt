@@ -160,3 +160,4 @@ C:\Users\devri\Desktop\classasp\msqldatabase1\obj\Debug\net9.0\refint\Msqldataba
 C:\Users\devri\Desktop\classasp\msqldatabase1\obj\Debug\net9.0\Msqldatabase1.pdb
 C:\Users\devri\Desktop\classasp\msqldatabase1\obj\Debug\net9.0\Msqldatabase1.genruntimeconfig.cache
 C:\Users\devri\Desktop\classasp\msqldatabase1\obj\Debug\net9.0\ref\Msqldatabase1.dll
+C:\Users\devri\Desktop\classasp\msqldatabase1\obj\Debug\net9.0\Msqldatabase1.sourcelink.json

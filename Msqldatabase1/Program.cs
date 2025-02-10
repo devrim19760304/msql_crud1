@@ -89,7 +89,28 @@ app.MapDelete("/deletepersonbody",async(ApplicationDbContext db,[FromBody] int d
 
 //find a person by id 
 
+app.MapPost("/findstaffbyid", async (ApplicationDbContext db, [FromBody] int id) =>
+{
+    var existedPerson = await db.Staffs.FindAsync(id);
 
+    if (existedPerson == null)
+        return Results.NotFound(new {message = $"Person with id {id} does not exist"});
+    
+    return Results.Ok(existedPerson);
+});
+
+
+
+// find by email
+app.MapPost("/findstaffbyemail", async (ApplicationDbContext db, [FromBody] string email) =>
+{
+    var existedPerson = await db.Staffs.FirstOrDefaultAsync(s => s.Email == email);
+
+    if (existedPerson == null)
+        return Results.NotFound(new {message = $"Person with email {email} does not exist"});
+    
+    return Results.Ok(existedPerson);
+});
 
 app.Run();
 
