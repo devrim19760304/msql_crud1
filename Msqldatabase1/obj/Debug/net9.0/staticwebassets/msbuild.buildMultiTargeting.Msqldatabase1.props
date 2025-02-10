@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Msqldatabase1.props" />
+</Project>
