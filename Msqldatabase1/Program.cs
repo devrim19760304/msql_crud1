@@ -6,11 +6,23 @@ using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//add cors
+builder.Services.AddCors(options=> {
+    options.AddPolicy("allowAll",policy=> {
+        policy.AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin();
+    });
+
+});
+
 // Register EF Core with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+//apply cors
+app.UseCors("allowAll");
 
 app.MapGet("/", () => "Hello World!");
 

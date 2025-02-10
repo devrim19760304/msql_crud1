@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>CREATE A NEW PERSON</h1><br>
+<button type="button" onclick="createPerson()">CREATE PERSON</button>
+
+<script>
+    function getAll() {
+        const url="http://localhost:5146/showall";
+        fetch(url, {
+            method:"GET"
+        })
+        .then((response)=> {
+            if (!response.ok) {
+                throw new Error ("error with fetch");
+
+            }
+            return response.json();
+        })
+        .then((data)=> {
+            console.log(data);
+        })
+        .catch((error)=> {
+            console.error("error",error)
+
+
+
+            
+        })
+    }
+
+    //create a person and send to database 
+    function createPerson() {
+
+        const staff= {
+            FirstName:"George",
+            LastName:"Williams",
+            Email:"george@example.com",
+            Gender:"female",
+            Department:"Manager of Nothing",
+            Location:"Drammen",
+            Salary:50000
+        }
+        const url="http://localhost:5146/addstaff";
+        //fetch 
+        fetch(url,{
+            method:"POST",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(staff)
+        })
+        .then((response)=> {
+            if (!response.ok) {
+                throw new Error ("error to fetch");
+            }
+            return response.json()
+        })
+        .then((data)=> {
+            console.log(data);
+        })
+        .catch((error)=> {
+            console.error("error",error);
+        })
+        
+    }
+
+    function getFromAPI() {
+        const url="https://randomuser.me/api/?results=10";
+        fetch(url,{
+            method:"GET"
+        })
+        .then((response)=> {
+            if (!response.ok) {
+                throw new Error("error fetch")
+            }
+            return response.json();
+        })
+        .then((data)=> {
+            //console.log(data.results);
+            let rawData=data.results;
+            rawData.forEach(p=>console.log(p.name.first) );
+            //foreach(var )
+
+        })
+        .catch((error)=> {
+            console.error("error",error)
+        })
+    }
+
+    getAll()
+    getFromAPI()
+</script>
+<body>
+    
+</body>
+</html>
