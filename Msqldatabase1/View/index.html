@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <h1>CREATE A NEW PERSON</h1><br>
-<button type="button" onclick="createPerson()">CREATE PERSON</button>
+<button type="button" onclick="createPerson()">CREATE PERSON</button><br>
+<button type="button" onclick="getFromAPI()">CREATE FROM API</button>
 
 <script>
     function getAll() {
@@ -69,8 +70,24 @@
         
     }
 
+    //people from ap
+
     function getFromAPI() {
+
+        
         const url="https://randomuser.me/api/?results=10";
+        const departments = [
+            "Human Resources",
+            "Finance",
+            "Marketing",
+            "Sales",
+            "IT Support",
+            "Product Development",
+            "Customer Service",
+            "Logistics",
+            "Legal",
+            "Research & Development"
+        ];
         fetch(url,{
             method:"GET"
         })
@@ -83,14 +100,63 @@
         .then((data)=> {
             //console.log(data.results);
             let rawData=data.results;
-            rawData.forEach(p=>console.log(p.name.first) );
-            //foreach(var )
+            rawData.forEach(p=> {
+
+                let newPerson={
+                    FirstName:p.name.first,
+                    LastName:p.name.last,
+                    Gender:p.gender,
+                    Email:p.email,
+                    Department:departments[Math.floor(Math.random()*departments.length)],
+                    Salary:Math.floor(Math.random()*10000)+20000,
+                    Location:p.location.city
+                }
+
+                //add to function to create new database instance
+                createPersonFromApi(newPerson);
+
+
+
+            }
+            
+        
+        
+        );
+            
 
         })
         .catch((error)=> {
             console.error("error",error)
         })
     }
+
+    //create from API 
+    function createPersonFromApi(samplestaff) {
+
+        
+        const url="http://localhost:5146/addstaff";
+        //fetch 
+        fetch(url,{
+            method:"POST",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(samplestaff)
+        })
+        .then((response)=> {
+            if (!response.ok) {
+                throw new Error ("error to fetch");
+            }
+            return response.json()
+        })
+        .then((data)=> {
+            console.log(data);
+        })
+        .catch((error)=> {
+            console.error("error",error);
+        })
+
+        }
 
     getAll()
     getFromAPI()
