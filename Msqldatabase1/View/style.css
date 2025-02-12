@@ -18,4 +18,26 @@ h1 {
 
 }
 
+#staffTable {
+    border-collapse: collapse;
+    padding-top: 10px;
+    font-size:10px;
+    
+}
+
+#staffTable th ,td ,tr {
+   width:auto;
+   border:solid 1px;
+   
+
+}
+
+#table-modal-dialog {
+
+    border:0.1px;
+    padding-top: 50px;
+    position:relative;
+    top:350px;
+}
+
 

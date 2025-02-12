@@ -17,8 +17,20 @@ builder.Services.AddCors(options=> {
 });
 
 // Register EF Core with SQL Server
+/*
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    */
+
+var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new Exception("Database connection string is missing! Set it as an environment variable.");
+}
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 //apply cors

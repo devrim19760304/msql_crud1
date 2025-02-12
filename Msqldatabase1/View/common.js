@@ -1,6 +1,7 @@
 let allPeople=[];
 
     async function getAll() {
+        ;
         const url = "http://localhost:5146/showall";
         try {
             const response = await fetch(url, { method: "GET" });
@@ -13,6 +14,8 @@ let allPeople=[];
         } catch (error) {
             console.error("error", error);
         }
+        //create table function 
+        createTable()
     }
 
     async function createFromAPI() {
@@ -22,6 +25,8 @@ let allPeople=[];
             alert("It is already populated");
             return;
         }
+
+       
 
         const url = "https://randomuser.me/api/?results=10";
         const departments = [
@@ -73,3 +78,96 @@ let allPeople=[];
             console.error("error", error);
         }
     }
+
+
+    //create table 
+    // Create table and modal close functionality
+    async function createTable() {
+        console.log("---------- Creating table", allPeople);
+        
+        // Get modal container
+        let tableModalDialog = document.getElementById("table-modal-dialog");
+
+        // Ensure the modal exists
+        if (!tableModalDialog) {
+            console.error("Modal dialog element not found!");
+            return;
+        }
+
+        // Remove any existing table to avoid duplication
+        let existingTable = document.getElementById("staffTable");
+        if (existingTable) {
+            existingTable.remove();
+        }
+
+        // Create table
+        let staffTable = document.createElement("table");
+        staffTable.id = "staffTable"; // Assign an ID for reference
+
+        // Create table header
+        let staffTableHeader = document.createElement("thead");
+        staffTableHeader.innerHTML = `
+            <tr> 
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Location</th>    
+            </tr>    
+        `;
+        staffTable.appendChild(staffTableHeader);
+
+        // Create table body
+        let staffTableBody = document.createElement("tbody");
+
+        // Populate table rows with `allPeople` data
+        allPeople.forEach((person) => {
+            let row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${person.id}</td>
+                <td>${person.firstName}</td>
+                <td>${person.lastName}</td>
+                <td>${person.gender}</td>
+                <td>${person.email}</td>
+                <td>${person.department}</td>
+                <td>${person.salary}</td>
+                <td>${person.location}</td>
+            `;
+            staffTableBody.appendChild(row);
+        });
+
+        staffTable.appendChild(staffTableBody);
+
+        // Append table inside modal
+        tableModalDialog.innerHTML = ""; // Clear previous content to avoid duplication
+        tableModalDialog.style.backgroundColor="powderblue";
+        tableModalDialog.appendChild(staffTable);
+
+        // Create "Close" button only if it does not exist
+        let existingCloseButton = document.getElementById("modal-button");
+        if (!existingCloseButton) {
+            let modalButton = document.createElement("button");
+            modalButton.id = "modal-button";
+            modalButton.innerText = "Close";
+
+            // Add event listener to close modal
+            modalButton.addEventListener("click", function () {
+                tableModalDialog.close(); // Close modal on button click
+            });
+
+            tableModalDialog.appendChild(modalButton);
+            modalButton.style.marginTop="20px";
+            modalButton.style.width="140px";
+            modalButton.style.display="block";
+            
+        }
+
+        // Show the modal
+        tableModalDialog.showModal();
+    }
+    
+
+
