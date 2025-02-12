@@ -1,0 +1,21 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin:auto;
+    padding-top:10px;
+   
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+
+
+#button-section {
+    display:flexbox;
+    justify-items:right;
+
+}
+
+

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j5i+E1vM7sI=",
+  "dgSpecHash": "+CCi6xzosF8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\devri\\Desktop\\classasp\\msqldatabase1\\Msqldatabase1.csproj",
+  "projectFilePath": "C:\\Users\\devri\\Desktop\\ALL_LESSONS\\classasp\\msqldatabase1\\Msqldatabase1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\devri\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\devri\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

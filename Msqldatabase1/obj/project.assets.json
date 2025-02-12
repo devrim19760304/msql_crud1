@@ -4716,11 +4716,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\devri\\Desktop\\classasp\\Msqldatabase1\\Msqldatabase1.csproj",
+      "projectUniqueName": "C:\\Users\\devri\\Desktop\\ALL_LESSONS\\classasp\\Msqldatabase1\\Msqldatabase1.csproj",
       "projectName": "Msqldatabase1",
-      "projectPath": "C:\\Users\\devri\\Desktop\\classasp\\Msqldatabase1\\Msqldatabase1.csproj",
+      "projectPath": "C:\\Users\\devri\\Desktop\\ALL_LESSONS\\classasp\\Msqldatabase1\\Msqldatabase1.csproj",
       "packagesPath": "C:\\Users\\devri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\devri\\Desktop\\classasp\\Msqldatabase1\\obj\\",
+      "outputPath": "C:\\Users\\devri\\Desktop\\ALL_LESSONS\\classasp\\Msqldatabase1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
